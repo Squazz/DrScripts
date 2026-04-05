@@ -58,7 +58,8 @@ function Get-DrtvFilmsFromEmbeddedJson {
         }
 
         # Filter our titles that are not actual movies but sections or categories on the DR website
-        if ($title -eq "Film _ Netop tilføjet" -or $title -eq "Anmelderroste film" -or $title -eq "DRTV - Stream TV online her") {
+        if ($title -eq "Anmelderroste film" -or $title -eq "DRTV - Stream TV online her" -or $title -eq "Film | Netop tilføjet") {
+            Write-Host "Udeladt film: $title"
             continue
         }
 
@@ -72,7 +73,8 @@ function Get-DrtvFilmsFromEmbeddedJson {
             else {
                 "https://www.dr.dk/drtv/$watchPath"
             }
-
+        
+        Write-Host "Fundet film: $title"
         $results.Add([pscustomobject]@{
             name = $title
             link = $fullLink
@@ -288,3 +290,12 @@ FetchFromUrl -Url "https://www.dr.dk/drtv/liste/film-_-netop-tilfoejet_409048"
 
 Write-Host "Henter anmelderroste film fra DR..."
 FetchFromUrl -Url "https://www.dr.dk/drtv/liste/anmelderroste-film_351892"
+
+Write-Host "Henter mest sete film fra DR..."
+FetchFromUrl -Url "https://www.dr.dk/drtv/liste/ta-film-_-mest-sete_520856"
+
+Write-Host "Henter filmklassikere fra DR..."
+FetchFromUrl -Url "https://www.dr.dk/drtv/liste/kategorier_film_release-year_filmklassikere_501049"
+
+Write-Host "Henter krimi og thrillere fra DR..."
+FetchFromUrl -Url "https://www.dr.dk/drtv/liste/kategorier_film_krimi_thriller_481440"
