@@ -291,9 +291,6 @@ FetchFromUrl -Url "https://www.dr.dk/drtv/liste/film-_-netop-tilfoejet_409048"
 Write-Host "Henter anmelderroste film fra DR..."
 FetchFromUrl -Url "https://www.dr.dk/drtv/liste/anmelderroste-film_351892"
 
-Write-Host "Henter mest sete film fra DR..."
-FetchFromUrl -Url "https://www.dr.dk/drtv/liste/ta-film-_-mest-sete_520856"
-
 Write-Host "Henter filmklassikere fra DR..."
 FetchFromUrl -Url "https://www.dr.dk/drtv/liste/kategorier_film_release-year_filmklassikere_501049"
 
